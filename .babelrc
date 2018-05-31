@@ -2,14 +2,13 @@
   "presets": [
     ["env", {
       "targets": {
-        "node": "4.4"
+        "node": "6.10"
       }
     }],
     "stage-0"
   ],
   "plugins": [
     "transform-runtime",
-    "add-module-exports",
-    "array-includes"
+    "add-module-exports"
   ]
 }
