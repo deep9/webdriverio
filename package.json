@@ -28,7 +28,7 @@
     "clean:ios": "rimraf test/site/platforms/ios",
     "clean:android": "rimraf test/site/platforms/android",
     "compile": "run-p compile:*",
-    "compile:index": "mkdir -p build && babel index.js --out-file build/index.js",
+    "compile:index": "mkdir build && babel index.js --out-file build/index.js",
     "compile:lib": "babel lib/ -d build/lib",
     "compile:cleanup_for_windows": "rimraf -p",
     "cordova": "npm-run-all cordova:add_platforms --parallel cordova:compile:*",
@@ -56,8 +56,8 @@
     "test:unit": "mocha test/setup-unit.js test/spec/unit/*.js",
     "test:wdio": "mocha test/setup-unit.js test/spec/wdio/*.js",
     "postversion": "run-s build",
-    "prepare": "npm prune",
-    "prepack": "npm run compile:index && npm run compile:lib && npm run copy:packagejson && npm run copy:ejstemplate",
+    "prepare": "run-s build && npm prune",
+    "prepack": "npm run clean:build && npm run compile:index && npm run compile:lib && npm run copy:packagejson && npm run copy:ejstemplate",
     "watch": "npm run compile:lib -- --watch"
   },
   "dependencies": {
