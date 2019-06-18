@@ -233,10 +233,10 @@ npm install --save-dev babel-register babel-preset-es2015
 ```
 
 There are multiple ways to setup Babel using the wdio testrunner. If you are running Cucumber or Jasmine tests, you just need
-to register Babel in the before hook of your config file
+to register Babel in the beforeSession hook of your config file
 
 ```js
-    before: function() {
+    beforeSession: function() {
         require('babel-register');
     },
 ```
@@ -306,9 +306,9 @@ Similarly for mocha:
     },
 ```
 
-## Run WebdriverIO behind corperate proxy
+## Run WebdriverIO Behind Corporate Proxy
 
-If your company has a corperate proxy (e.g. on `http://my.corp.proxy.com:9090`) for all outgoing requests you can set it using the `proxy` configuration option. Just set in your `wdio.conf.js` the following:
+If your company has a corporate proxy (e.g. on `http://my.corp.proxy.com:9090`) for all outgoing requests you can set it using the `proxy` configuration option. Just set in your `wdio.conf.js` the following:
 
 ```js
 exports.config = {

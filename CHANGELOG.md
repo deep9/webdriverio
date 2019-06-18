@@ -1,13 +1,47 @@
 # CHANGELOG
+## unreleased
+* wdio changes
+    * add W3C actions protocol fallback for when moveTo protocol returns an error
+    * add W3C actions protocol fallback for when leftClick, middleClick or rightClick command / buttonDown, buttonPress, or buttonUp protocol returns an error
 
-## v4.12.1 (2018-05-24)
+## v4.14.2 (2019-01-11)
+* bugfix:
+    * fix css-id selector
+    * fix a nullref exception on network failures where response had no body
+
+## v4.14.1 (2018-11-30)
+* global:
+    * add config `region` that allows to specify the SauceLabs datacenter region
+* wdio changes:
+    * Allowing to specify a feature file with a scenario line number (#3019)
+* bugfixes:
+    * round values for touchMove command (#3039)
+
+## v4.14.0 (2018-10-23)
+* global:
+    * add `isKeyboardShown` command (#2848)
+    * add support for find by attribute and content, e.g. `div[data-test-name="main"]*=Hello` (#2970)
+* wdio changes:
+    * add `exclude` cli parameter
+* bugfixes:
+    * allow W3C fallbacks in IEDriver
+
+## v4.13.2 (2018-08-17)
 * global changes:
     * docs improvements
+* bugfix:
+    * fix protocol switch for IE (#2846)
+
+## v4.13.0 (2018-06-19)
+* global changes:
+    * docs improvements
+    * support ipv6 address in driver hostname (#2756)
     * Increased test coverage for reporters (#2730)
     * additional checks for isIOS, isAndroid and isMobile (#2739)
 * bugfixes:
     * Decide to read from stdin using a parameter rather than magic (#2704)
     * file check for specs passed in with cli arg (#2689)
+    * fix vulnerability with rgb2hex package
 
 ## v4.12.0 (2018-03-07)
 * global changes:

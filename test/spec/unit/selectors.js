@@ -9,8 +9,8 @@ describe('selector strategies helper', () => {
 
     it('should find an element using "id" method', () => {
         const element = findStrategy('#purplebox')
-        element.using.should.be.equal('id')
-        element.value.should.be.equal('purplebox')
+        element.using.should.be.equal('css selector')
+        element.value.should.be.equal('#purplebox')
     })
 
     it('should find an element using "name" method', () => {
@@ -138,6 +138,36 @@ describe('selector strategies helper', () => {
         const element = findStrategy('#What-is-WebdriverIO*=What')
         element.using.should.be.equal('xpath')
         element.value.should.be.equal('//*[contains(@id, "What-is-WebdriverIO") and contains(., "What")]')
+    })
+
+    it('should find an element by tag name + attribute + content', () => {
+        const element = findStrategy('div[some-attribute="some-value"]=some random text with "§$%&/()div=or others')
+        element.using.should.be.equal('xpath')
+        element.value.should.be.equal('//div[contains(@some-attribute, "some-value") and normalize-space() = "some random text with "§$%&/()div=or others"]')
+    })
+
+    it('should find an element by attribute + content', () => {
+        const element = findStrategy('[some-attribute="some-value"]=some random text with "§$%&/()div=or others')
+        element.using.should.be.equal('xpath')
+        element.value.should.be.equal('//*[contains(@some-attribute, "some-value") and normalize-space() = "some random text with "§$%&/()div=or others"]')
+    })
+
+    it('should find an element by attribute existence + content', () => {
+        const element = findStrategy('[some-attribute]=some random text with "§$%&/()div=or others')
+        element.using.should.be.equal('xpath')
+        element.value.should.be.equal('//*[@some-attribute and normalize-space() = "some random text with "§$%&/()div=or others"]')
+    })
+
+    it('should find an element by tag name + attribute + similar content', () => {
+        const element = findStrategy('div[some-attribute="some-value"]*=some random text with "§$%&/()div=or others')
+        element.using.should.be.equal('xpath')
+        element.value.should.be.equal('//div[contains(@some-attribute, "some-value") and contains(., "some random text with "§$%&/()div=or others")]')
+    })
+
+    it('should find an element by attribute + similar content', () => {
+        const element = findStrategy('[some-attribute="some-value"]*=some random text with "§$%&/()div=or others')
+        element.using.should.be.equal('xpath')
+        element.value.should.be.equal('//*[contains(@some-attribute, "some-value") and contains(., "some random text with "§$%&/()div=or others")]')
     })
 
     it('should find an element by ui automator strategy (android only)', () => {
