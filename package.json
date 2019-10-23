@@ -81,7 +81,6 @@
     "safe-buffer": "~5.1.1",
     "supports-color": "~5.0.0",
     "url": "~0.11.0",
-    "wdio-dot-reporter": "~0.0.8",
     "wgxpath": "~1.0.0"
   },
   "devDependencies": {
@@ -121,8 +120,7 @@
     "sauce-connect-launcher": "^1.2.1",
     "saucelabs": "^1.4.0",
     "sinon": "^4.0.0",
-    "snyk": "^1.28.0",
-    "wdio-mocha-framework": "^0.5.9"
+    "snyk": "^1.28.0"
   },
   "tags": [
     "webdriver",
